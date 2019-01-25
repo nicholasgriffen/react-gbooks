@@ -13,17 +13,17 @@ printType=books
 ```{  
     items: [  
         {  
-            selfLink,  
-            volumeInfo: {  
-                title,  
-                authors: [  
-                    ""  
+            selfLink,  //String
+            volumeInfo: {   //Object
+                title,  //String
+                authors: [  //Array
+                    ""  //String
                 ],
-                publisher,
+                publisher, //String
                 publishedDate,
-                imageLinks: {
-                    smallThumbnail, 
-                    thumbnail 
+                imageLinks: { //Object
+                    smallThumbnail, //String
+                    thumbnail //String
                 }
             }
         }
