@@ -28,4 +28,4 @@ printType=books
             }
         }
     ]
-}```
+}
