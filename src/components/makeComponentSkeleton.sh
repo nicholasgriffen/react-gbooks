@@ -1,6 +1,6 @@
 #/!bin/bash
 
-read -p 'Enter component name ' name
+name=$1
 echo 'Making directory 'src/components/$name 
 mkdir -p src/components/$name
 echo 'Touching' $name'.js'
