@@ -1,7 +1,7 @@
 #/!bin/bash
 
 name=$1
-echo 'Making directory 'src/components/$name 
+echo 'Making directory' src/components/$name 
 mkdir -p src/components/$name
 echo 'Touching' $name'.js'
 touch src/components/$name/$name.js
