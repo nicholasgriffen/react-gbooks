@@ -1,6 +1,5 @@
 #/!bin/bash
 
-
 read -p 'Enter component name ' name
 echo 'Making directory 'src/components/$name 
 mkdir -p src/components/$name
