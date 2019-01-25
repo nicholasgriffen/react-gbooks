@@ -1,6 +1,6 @@
 #/!bin/bash
 
-read -p ' Enter component name ' name
+read -p 'Enter component name' name
 mkdir ./$name
 echo 'Touching' $name'.js'
 touch ./$name/$name.js
