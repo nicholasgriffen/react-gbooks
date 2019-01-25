@@ -1,10 +1,12 @@
 #/!bin/bash
 
-read -p 'Enter component name' name
-mkdir ./$name
+
+read -p 'Enter component name ' name
+echo 'Making directory 'src/components/$name 
+mkdir -p src/components/$name
 echo 'Touching' $name'.js'
-touch ./$name/$name.js
+touch src/components/$name/$name.js
 echo 'Touching' $name'.css'
-touch ./$name/$name.css
+touch src/components/$name/$name.css
 echo 'Touching' $name'.test.js'
-touch ./$name/$name.test.js
+touch src/components/$name/$name.test.js
