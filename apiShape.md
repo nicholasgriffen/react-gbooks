@@ -1,18 +1,18 @@
-# Docs  
-https://developers.google.com/books/docs/v1/getting_started  
-  
-# Sample Request  
-GET https://www.googleapis.com/books/v1/volumes?  
-q=search+term  
-orderBy=relevance  
-fields=items  
-projection=lite  
-printType=books   
+# Docs
+https://developers.google.com/books/docs/v1/getting_started
 
-# Shape    
-```{  
-    items: [  
-        {  
+# Sample Request
+GET https://www.googleapis.com/books/v1/volumes?
+q=search+term
+orderBy=relevance
+fields=items
+projection=lite
+printType=books
+
+# Shape
+```{
+    items: [
+        {
             selfLink,  //String
             volumeInfo: {   //Object
                 title,  //String
@@ -20,7 +20,7 @@ printType=books
                     ""  //String
                 ],
                 publisher, //String
-                publishedDate,
+                publishedDate, //Date
                 imageLinks: { //Object
                     smallThumbnail, //String
                     thumbnail //String
