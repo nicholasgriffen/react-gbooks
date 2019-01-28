@@ -15,7 +15,7 @@ const { expect } = chai
 describe('<Books />', () => {
     it('takes books prop and renders ul with number of children equal to books.length', () => {
         const books = ['1', {id: 2}, 3]        
-        const wrapper = shallow(<Books books={books} />);
+        const wrapper = shallow(<Books books={books} />)
 
         expect(wrapper.find('ul').children()).to.have.lengthOf(books.length)
     })
