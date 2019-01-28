@@ -1,7 +1,16 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import Enzyme from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import chai from 'chai'
+import chaiEnzyme from 'chai-enzyme'
 
-import Header from './'
+import Header from './Header'
+
+Enzyme.configure({ adapter: new Adapter() })
+chai.use(chaiEnzyme())
+
+const shallow = Enzyme.shallow
+const { expect } = chai 
 
 describe('<Header />', () => {
     it('renders a #logo', () => {
