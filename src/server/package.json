@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/nicholasgriffen/react-gbooks#readme",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "express": "^4.16.4"
   },
   "devDependencies": {
