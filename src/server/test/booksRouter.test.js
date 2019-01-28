@@ -27,7 +27,7 @@ describe('/books', () => {
                 .then(plainRes => {
                     expect(plainRes.body).to.be.an('object').that.has.all.deep.keys(schema)
                     expect(jsRes.body).to.be.an('object').that.has.all.deep.keys(schema)
-                    expect(plainRes.body).to.not.deep.equal(jsRes.body)
+                    expect(plainRes.body.items[0].id).to.not.deep.equal(jsRes.body.items[0].id)
                 })
             })
     })
