@@ -9,10 +9,11 @@ export default class SearchInput extends React.Component {
     }
 
     onChange = e => {
+        this.props.onChange(e.target.value)
+
         this.setState({
             searchTerm: e.target.value
         })
-        this.props.onChange(e.target.value)
     }
     
     render() {
