@@ -1,5 +1,7 @@
 const { expect } = require('chai')
 
+const googleBooksClient = require('../lib/googleBooksClient')
+
 const schema = {
   items: [
     {
