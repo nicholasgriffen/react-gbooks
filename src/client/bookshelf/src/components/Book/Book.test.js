@@ -66,5 +66,22 @@ describe('<Book />', () => {
             publisher={props.publisher}
             publishedDate={props.publishedDate}/>)).to.throw('Warning: Failed prop type: The prop `thumbnail` is marked as required')
     })
-    
+
+    it('renders each prop with a class matching the prop', () => {
+        const wrapper = shallow(<Book 
+            selfLink={props.selfLink} 
+            title={props.title} 
+            authors={props.authors} 
+            publisher={props.publisher}
+            publishedDate={props.publishedDate}
+            thumbnail={props.thumbnail}/>)
+            
+            expect(wrapper.find('.selfLink')).to.have.lengthOf(1) 
+            expect(wrapper.find('.title')).to.have.lengthOf(1)    
+            expect(wrapper.find('.authors')).to.have.lengthOf(1)    
+            expect(wrapper.find('.publisher')).to.have.lengthOf(1)    
+            expect(wrapper.find('.publishedDate')).to.have.lengthOf(1)    
+            expect(wrapper.find('.thumbnail')).to.have.lengthOf(1)
+    })
+       
 })

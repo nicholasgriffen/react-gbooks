@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'  
 
-export default function Book({ book }) {
-    return (<li>{book}</li>)
+export default function Book({ selfLink, title, authors, publisher, publishedDate, thumbnail }) {
+    return (<li>
+                <a class="selfLink" href={selfLink}>More info on Google Books</a>
+            </li>)
 }
 
 Book.propTypes = {
