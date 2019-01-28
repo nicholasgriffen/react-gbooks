@@ -9,6 +9,13 @@ import './App.css'
 
 class App extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      books: []
+    }
+  }
+
   extractBookPropsFromBook(book) {
     const bookProps = {}
 
@@ -27,7 +34,8 @@ class App extends Component {
       <div id='react-app'>
         <Header />
         <SearchInput />
-        <Books />
+        (this.state.books && <Books 
+        books={this.state.books.map(book => this.extractBookPropsFromBook(book))}/>)
         <Footer />  
       </div>
     )
