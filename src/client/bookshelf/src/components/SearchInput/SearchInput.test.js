@@ -3,6 +3,7 @@ import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import chai from 'chai'
 import chaiEnzyme from 'chai-enzyme'
+import sinon from 'sinon'
 
 import SearchInput from './SearchInput'
 
@@ -20,5 +21,14 @@ describe('<SearchInput />', () => {
         
         expect(input).to.have.lengthOf(1)
         expect(type).to.equal('search')
+    })
+    it('takes a callback and triggers it on change', () =>{
+        const onChange = sinon.spy()
+        const wrapper = shallow(<SearchInput onChange={onChange} />);
+        const input = wrapper.find('input')
+
+        input.simulate("change", { target: { value: "test"}})
+        
+        expect(onChange).to.have.property('callCount', 1)
     })
 })
