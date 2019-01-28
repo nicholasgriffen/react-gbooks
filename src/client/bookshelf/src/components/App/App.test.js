@@ -16,23 +16,19 @@ const bookProps = {
 }
 
 const testBook = {
-  items: [
-  {
-      selfLink: "",  
-      volumeInfo: {  
-          title: "", 
-          authors: [ 
-              ""  
-          ],
-          publisher: "",
-          publishedDate: '',
-          imageLinks: { 
-              smallThumbnail: "",
-              thumbnail: "" 
-          }
-      }
+selfLink: "",  
+  volumeInfo: {  
+    title: "", 
+    authors: [ 
+        ""  
+    ],
+    publisher: "",
+    publishedDate: '',
+    imageLinks: { 
+        smallThumbnail: "",
+        thumbnail: "" 
+    }
   }
-]
 }
 
 describe('<App />', () => {
@@ -44,10 +40,10 @@ describe('<App />', () => {
 
   describe('App#exctractPropsFromBooks', () => {
     it('is a function', () => {
-      expect(new App().extractBookPropsFromBooks).to.be.a('function')
+      expect(new App().extractBookPropsFromBook).to.be.a('function')
     })
     it('returns an object with keys matching the expected props to Book', () => {
-      const expected = new App().extractBookPropsFromBooks(testBook)
+      const expected = new App().extractBookPropsFromBook(testBook)
 
       expect(expected).to.be.an('object').that.has.all.deep.keys(bookProps)
     }) 
