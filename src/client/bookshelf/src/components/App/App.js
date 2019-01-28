@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { debounce } from 'debounce'
 import Header from '../Header/Header'
 import SearchInput from '../SearchInput/SearchInput'
 import Books from '../Books/Books'
@@ -12,7 +12,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      books: []
+      books: [],
+      endpoint: process.env.REACT_APP_API_ENDPOINT
     }
   }
 
@@ -29,13 +30,30 @@ class App extends Component {
     return bookProps
   }
 
+  onChange = async term => {
+   const books = await fetch(`${this.state.endpoint}/?search=${encodeURIComponent(term)}`)
+   const body = await books.json()
+
+    if (books.status !== 200) {
+      return this.setState({
+        ...this.state, 
+        error: body.message
+      })  
+    } else {
+      return this.setState({
+        ...this.state, 
+        books: body
+      })
+    }
+  }
+
   render() {
     return (
       <div id='react-app'>
         <Header />
-        <SearchInput />
-        (this.state.books && <Books 
-        books={this.state.books.map(book => this.extractBookPropsFromBook(book))}/>)
+        <SearchInput onChange={debounce(this.onChange, 500)}/>
+        {this.state.books && <Books 
+        books={this.state.books.map(book => this.extractBookPropsFromBook(book))}/>}
         <Footer />  
       </div>
     )
