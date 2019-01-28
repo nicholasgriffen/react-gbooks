@@ -25,6 +25,6 @@ describe('get.googleBooks', () => {
     expect(get.googleBooks).to.be.a('function')
   })
   it('returns object with keys and nested keys equal to those in the schema ', () => {
-    expect(get.googleBooks()).to.have.all.deep.keys(schema)
+    expect(get.googleBooks()).to.be.an('object').that.has.all.deep.keys(schema)
   })
 })
