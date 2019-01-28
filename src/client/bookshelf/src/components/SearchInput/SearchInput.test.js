@@ -15,12 +15,18 @@ const { expect } = chai
 
 describe('<SearchInput />', () => {
     it('renders an input with type search', () => {
-        const wrapper = shallow(<SearchInput />)
+        const wrapper = shallow(<SearchInput onChange={() => {}}/>)
         const input = wrapper.find('input')
         const type = input.prop('type')
         
         expect(input).to.have.lengthOf(1)
         expect(type).to.equal('search')
+    })
+    it('requires onChange prop', () => {    
+        const stub = sinon.stub(console, 'error')
+        stub.throwsArg(0)
+        expect(() => shallow(<SearchInput />)).to.throw('Warning: Failed prop type: The prop `onChange` is marked as required')
+        stub.resetHistory()    
     })
     it('takes an onChange prop and calls it on change', () =>{
         const onChange = sinon.spy()
