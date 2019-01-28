@@ -2,26 +2,7 @@ const { expect } = require('chai')
 
 const googleBooksClient = require('../lib/googleBooksClient')
 
-const schema = {
-  items: [
-    {
-        selfLink: "",  //String
-        volumeInfo: {   //Object
-            title: "",  //String
-            authors: [  //Array
-                ""  //String
-            ],
-            publisher: "", //String
-            publishedDate: new Date(), //Date
-            imageLinks: { //Object
-                smallThumbnail: "", //String
-                thumbnail: "" //String
-            }
-        }
-    }
-  ]
-}
-
+const schema = require('./googleBooksSchema')
 const term = 'Mark Twain'
 
 describe('googleBooksClient.search', () => {
