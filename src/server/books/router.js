@@ -5,7 +5,8 @@ const { search } = require('../lib/googleBooksClient')
 const router = Router()
 
 router.use('/', async (req, res, next) => {
-    const books = await search().catch(e => {
+    let term = req.query.search ? req.query.search : null
+    const books = await search(term).catch(e => {
         return next(e)
     })
     res.status = 200

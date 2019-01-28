@@ -16,4 +16,19 @@ describe('/books', () => {
                 expect(res.body).to.be.an('object').that.has.all.deep.keys(schema)
             })
     })
+    it('accepts a query parameter that affects the return value', () => {
+        return chai
+            .request(app)
+            .get('/books?search=javascript')
+            .then(jsRes => {
+                return chai
+                .request(app)
+                .get('/books')
+                .then(plainRes => {
+                    expect(plainRes.body).to.be.an('object').that.has.all.deep.keys(schema)
+                    expect(jsRes.body).to.be.an('object').that.has.all.deep.keys(schema)
+                    expect(plainRes.body.items[0].id).to.not.deep.equal(jsRes.body.items[0].id)
+                })
+            })
+    })
 })
