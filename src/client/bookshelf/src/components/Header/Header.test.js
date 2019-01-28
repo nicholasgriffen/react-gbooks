@@ -13,13 +13,13 @@ const shallow = Enzyme.shallow
 const { expect } = chai 
 
 describe('<Header />', () => {
-    it('renders a #logo', () => {
+    it('renders an a#logo', () => {
         const wrapper = shallow(<Header />)
-        expect(wrapper.find('#logo')).to.have.lengthOf(1)
+        expect(wrapper.find('a#logo')).to.have.lengthOf(1)
     })
-    it('renders a #headerTitle', () => {
+    it('renders a h1#headerTitle', () => {
         const wrapper = shallow(<Header />)
-        expect(wrapper.find('#headerTitle')).to.have.lengthOf(1)        
+        expect(wrapper.find('h1#headerTitle')).to.have.lengthOf(1)        
     })
     it('renders a header', () => {
         const wrapper = shallow(<Header />)
