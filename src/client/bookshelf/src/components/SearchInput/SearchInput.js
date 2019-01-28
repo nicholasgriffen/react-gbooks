@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'  
 
 export default class SearchInput extends React.Component {
     constructor() {
@@ -25,4 +26,8 @@ export default class SearchInput extends React.Component {
             ></input>
         )
     }
+}
+
+SearchInput.propTypes = {
+    onChange: PropTypes.func.isRequired
 }
