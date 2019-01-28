@@ -8,6 +8,11 @@ import Footer from '../Footer/Footer'
 import './App.css'
 
 class App extends Component {
+
+  extractBookPropsFromBook() {
+
+  }
+
   render() {
     return (
       <div id='react-app'>
