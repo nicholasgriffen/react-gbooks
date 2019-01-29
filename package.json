@@ -1,0 +1,41 @@
+{
+  "name": "react-gbooks-server",
+  "version": "0.1.0",
+  "description": "RESTful Express application meant to accept requests, make requests to the Google Books API, then respond to the first requestor with data from the Google Books API",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha --watch",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nicholasgriffen/react-gbooks.git"
+  },
+  "keywords": [
+    "rest",
+    "express",
+    "api",
+    "google",
+    "books"
+  ],
+  "author": "nicholasgriffen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholasgriffen/react-gbooks/issues"
+  },
+  "homepage": "https://github.com/nicholasgriffen/react-gbooks#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0"
+  }
+}
