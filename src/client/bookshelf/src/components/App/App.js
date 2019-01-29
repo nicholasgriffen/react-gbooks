@@ -25,7 +25,7 @@ class App extends Component {
      return res.json()
    }).then(json => {
      const books = json.items
-     return  this.setState({
+     return this.setState({
       ...this.state, 
       books 
     })
@@ -43,8 +43,8 @@ class App extends Component {
         <Header/>
         <SearchInput
          onSubmit={this.onSearchSubmit}/>
-        {<Books 
-        books={this.state.books}/>}
+        <Books 
+         books={this.state.books}/>
       </div>
     )
   }
