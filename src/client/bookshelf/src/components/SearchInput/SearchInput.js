@@ -35,5 +35,5 @@ export default class SearchInput extends React.Component {
 }
 
 SearchInput.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired
 }

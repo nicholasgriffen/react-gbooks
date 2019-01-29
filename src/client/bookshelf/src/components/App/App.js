@@ -15,13 +15,18 @@ class App extends Component {
       endpoint: process.env.REACT_APP_API_ENDPOINT, 
     }
   }
+  
+  // running searches with a debounced onChange would be a nice UX 
+  // but had difficulty getting that to work in a reasonable way - typically 
+  // triggered many requests, and race conditions between render, setState, and 
+  // the mapping in the Books component 
 
   onSearchSubmit = term => {
     return fetch(`${this.state.endpoint}/?search=${encodeURIComponent(term)}`).then(res => {
      return res.json()
    }).then(json => {
      const books = json.items
-    return  this.setState({
+     return  this.setState({
       ...this.state, 
       books 
     })
