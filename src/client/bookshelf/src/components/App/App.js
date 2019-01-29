@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import Header from '../Header/Header'
 import SearchInput from '../SearchInput/SearchInput'
 import Books from '../Books/Books'
@@ -12,30 +11,35 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      books: []
+      books: [],
+      endpoint: process.env.REACT_APP_API_ENDPOINT, 
     }
   }
+  
+  // running searches with a debounced onChange would be a nice UX 
+  // but had difficulty getting that to work in a reasonable way - typically 
+  // triggered many requests, and race conditions between render, setState, and 
+  // the mapping in the Books component 
 
-  extractBookPropsFromBook(book) {
-    const bookProps = {}
-
-    bookProps.selfLink = book.selfLink
-    bookProps.title = book.volumeInfo.title 
-    bookProps.authors = book.volumeInfo.authors
-    bookProps.publisher = book.volumeInfo.publisher
-    bookProps.publishedDate = book.volumeInfo.publishedDate
-    bookProps.thumbnail = book.volumeInfo.imageLinks.thumbnail 
-    
-    return bookProps
+  onSearchSubmit = term => {
+    return fetch(`${this.state.endpoint}/?search=${encodeURIComponent(term)}`).then(res => {
+     return res.json()
+   }).then(json => {
+     const books = json.items
+     return  this.setState({
+      ...this.state, 
+      books 
+    })
+   })
   }
 
   render() {
     return (
       <div id='react-app'>
         <Header />
-        <SearchInput />
-        (this.state.books && <Books 
-        books={this.state.books.map(book => this.extractBookPropsFromBook(book))}/>)
+        <SearchInput onSubmit={this.onSearchSubmit}/>
+        {<Books 
+        books={this.state.books}/>}
         <Footer />  
       </div>
     )
