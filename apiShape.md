@@ -15,6 +15,7 @@ printType=books
         {
             selfLink,  //String
             volumeInfo: {   //Object
+                infoLink, //String
                 title,  //String
                 authors: [  //Array
                     ""  //String
