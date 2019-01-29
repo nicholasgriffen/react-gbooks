@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### BEFORE DEVELOPMENT OR TESTING
   * `cd react-gbooks/src/client/bookshelf && npm install` to install dependencies 
-  * `cd react-gbooks/src/server && npm install && npm start` to run the server on localhost:3030:  `Server says: Server proxies requests to the Google Books API`  
+  * `cd react-gbooks/src/server && npm install && npm start` to run the server on localhost:3030:  
+    `Server says: Server proxies requests to the Google Books API`  
   or 
   * update the `"proxy"` field in `package.json` to point to some other server 
 
