@@ -44,7 +44,9 @@ The build is minified and the filenames include the hashes.<br>
 
 ### Truobleshooting `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you're seeing this error, you're likely using an old version of react-scripts. You can either fix it by avoiding a dependency that uses modern syntax, or by upgrading to react-scripts@>=2.0.0 and following the migration instructions in the changelog.
+
+See also this documentation with [slightly more info](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)  
 See also this documentation about [deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `./src/components/makeComponentSkeleton.sh <Name of component>`   
