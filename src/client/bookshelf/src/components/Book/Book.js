@@ -29,9 +29,9 @@ export default function Book({book}) {
                 authors: PropTypes.arrayOf(PropTypes.string).isRequired,
                 publisher: PropTypes.string.isRequired,
                 publishedDate: PropTypes.string.isRequired,
-                imageLinks: {
+                imageLinks: PropTypes.shape({
                     thumbnail: PropTypes.string.isRequired
-                }
+                })
             })
         })
     }

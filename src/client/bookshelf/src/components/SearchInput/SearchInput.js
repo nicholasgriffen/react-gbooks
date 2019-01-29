@@ -22,18 +22,26 @@ export default class SearchInput extends React.Component {
     
     render() {
         return (
-        <form onSubmit ={this.onSubmit}>
-            <input 
+        <form 
+        style={{
+            display: "flex", 
+            "flexDirection": "row",
+            "justifyContent": "space-between" 
+            }}onSubmit={this.onSubmit}>
+            <input
+                style={{flex: "auto"}}
                 type="search"
                 onChange={this.onChange}
                 value={this.state.searchTerm}
             ></input>
-            <button>Search</button>    
+            <button
+                style={{flex: "auto"}}
+                >Search</button>    
         </form>
         )
     }
 }
 
 SearchInput.propTypes = {
-    onChange: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 }

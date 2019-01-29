@@ -119,11 +119,10 @@ input, textarea {
     border: 1px solid #338618; }
 
 textarea {
-  width: 100%; }
+  width: 100%; 
+}
 
 .button, button, input[type="submit"], input[type="reset"], input[type="button"] {
-  display: inline-block;
-  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -132,7 +131,8 @@ textarea {
   border-radius: 1px;
   border: 1px solid #338618;
   cursor: pointer;
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+}
   .button[disabled], button[disabled], input[type="submit"][disabled], input[type="reset"][disabled], input[type="button"][disabled] {
     cursor: default;
     opacity: .5; }
@@ -146,7 +146,6 @@ textarea, select, input[type] {
   color: #4a4a4a;
   padding: 6px 10px;
   /* The 6px vertically centers text on FF, ignored by Webkit */
-  margin-bottom: 10px;
   background-color: #C7E3BE;
   border: 1px solid #C7E3BE;
   border-radius: 4px;
@@ -160,6 +159,6 @@ input[type="checkbox"]:focus {
   outline: 1px dotted #338618; }
 
 label, legend, fieldset {
-  display: block;
+  /* display: block; */
   margin-bottom: .5rem;
   font-weight: 600; }
