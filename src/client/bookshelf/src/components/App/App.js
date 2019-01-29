@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Header from '../Header/Header'
 import SearchInput from '../SearchInput/SearchInput'
 import Books from '../Books/Books'
-import Footer from '../Footer/Footer'
 
 import './App.css'
 
@@ -35,12 +34,17 @@ class App extends Component {
 
   render() {
     return (
-      <div id='react-app'>
-        <Header />
-        <SearchInput onSubmit={this.onSearchSubmit}/>
+      <div id='react-app'
+      style={{
+        display: "flex", 
+        "flex-direction": "column",
+        "justify-content": "space-between" 
+        }}>
+        <Header/>
+        <SearchInput
+         onSubmit={this.onSearchSubmit}/>
         {<Books 
         books={this.state.books}/>}
-        <Footer />  
       </div>
     )
   }

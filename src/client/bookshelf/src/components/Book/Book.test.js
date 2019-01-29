@@ -14,13 +14,17 @@ chai.use(chaiEnzyme())
 const shallow = Enzyme.shallow
 const { expect } = chai
 
-const props = {
+const book = {
     selfLink: 'PropTypes.string.isRequired',
-    title: 'PropTypes.string.isRequired',
-    authors: ['PropTypes.arrayOf(PropTypes.string).isRequired'],
-    publisher: 'PropTypes.string.isRequired',
-    publishedDate: 'PropTypes.string.isRequired',
-    thumbnail: 'PropTypes.string.isRequired'
+    volumeInfo: {
+        title: 'PropTypes.string.isRequired',
+        authors: ['PropTypes.arrayOf(PropTypes.string).isRequired'],
+        publisher: 'PropTypes.string.isRequired',
+        publishedDate: 'PropTypes.string.isRequired',
+        imageLinks: {
+            thumbnail: 'PropTypes.string.isRequired'
+        }
+    }
 }
 
 describe('<Book />', () => {
@@ -29,52 +33,13 @@ describe('<Book />', () => {
         stub = sinon.stub(console, 'error')
         stub.throwsArg(0)
     })
-    afterEach(() => {
+    afterAll(() => {
         stub.resetHistory()
-    })
-
-    it('requires selfLink prop', () => {    
-        expect(() => shallow(<Book />)).to.throw('Warning: Failed prop type: The prop `selfLink` is marked as required')
-    })
-    it('requires title prop', () => {    
-        expect(() => shallow(<Book 
-            selfLink={props.selfLink}/>)).to.throw('Warning: Failed prop type: The prop `title` is marked as required')
-    })
-    it('requires authors prop', () => {    
-        expect(() => shallow(<Book 
-            selfLink={props.selfLink} 
-            title={props.title}/>)).to.throw('Warning: Failed prop type: The prop `authors` is marked as required')
-    })
-    it('requires publisher prop', () => {    
-        expect(() => shallow(<Book 
-            selfLink={props.selfLink} 
-            title={props.title} 
-            authors={props.authors}/>)).to.throw('Warning: Failed prop type: The prop `publisher` is marked as required')
-    })
-    it('requires publishedDate prop', () => {    
-        expect(() => shallow(<Book 
-            selfLink={props.selfLink} 
-            title={props.title} 
-            authors={props.authors} 
-            publisher={props.publisher}/>)).to.throw('Warning: Failed prop type: The prop `publishedDate` is marked as required')
-    })
-    it('requires thumbnail prop', () => {    
-        expect(() => shallow(<Book 
-            selfLink={props.selfLink} 
-            title={props.title} 
-            authors={props.authors} 
-            publisher={props.publisher}
-            publishedDate={props.publishedDate}/>)).to.throw('Warning: Failed prop type: The prop `thumbnail` is marked as required')
     })
 
     it('renders each prop with a class matching the prop', () => {
         const wrapper = shallow(<Book 
-            selfLink={props.selfLink} 
-            title={props.title} 
-            authors={props.authors} 
-            publisher={props.publisher}
-            publishedDate={props.publishedDate}
-            thumbnail={props.thumbnail}/>)
+            book={book}/>)
             
             expect(wrapper.find('.selfLink')).to.have.lengthOf(1) 
             expect(wrapper.find('.title')).to.have.lengthOf(1)    

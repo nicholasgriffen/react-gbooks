@@ -15,31 +15,30 @@ const { expect } = chai
 
 describe('<SearchInput />', () => {
     it('renders an input with type search', () => {
-        const wrapper = shallow(<SearchInput onChange={() => {}}/>)
+        const wrapper = shallow(<SearchInput onSubmit={() => {}}/>)
         const input = wrapper.find('input')
         const type = input.prop('type')
         
         expect(input).to.have.lengthOf(1)
         expect(type).to.equal('search')
     })
-    it('requires onChange prop', () => {    
+    it('requires onSubmit prop', () => {    
         const stub = sinon.stub(console, 'error')
         stub.throwsArg(0)
-        expect(() => shallow(<SearchInput />)).to.throw('Warning: Failed prop type: The prop `onChange` is marked as required')
+        expect(() => shallow(<SearchInput />)).to.throw('Warning: Failed prop type: The prop `onSubmit` is marked as required')
         stub.resetHistory()    
     })
-    it('takes an onChange prop and calls it on change', () =>{
-        const onChange = sinon.spy()
-        const wrapper = shallow(<SearchInput onChange={onChange} />);
-        const input = wrapper.find('input')
+    it('takes an onSubmit prop and calls it on submit', () =>{
+        const onSubmit = sinon.spy()
+        const wrapper = shallow(<SearchInput onSubmit={onSubmit} />);
+        const form = wrapper.find('form')
 
-        input.simulate("change", { target: { value: "test"}})
+        form.simulate("submit", { preventDefault: () => {}, target: { value: "test"}})
         
-        expect(onChange).to.have.property('callCount', 1)
+        expect(onSubmit).to.have.property('callCount', 1)
     })
     it('sets input initial value to \'\' and updates it on change', () =>{
-        const onChange = sinon.spy()
-        const wrapper = shallow(<SearchInput onChange={onChange} />);
+        const wrapper = shallow(<SearchInput onSubmit={() => {}} />);
         
         expect(wrapper.find('input').prop('value')).to.be.empty
 
