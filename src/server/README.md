@@ -10,7 +10,7 @@
     `Server says: Server proxies requests to the Google Books API`  
   or 
   * update the `"proxy"` field in `package.json` to point to some other server  
-  If you haven't yet, check out the [client]('../client/README.md')
+  If you haven't yet, check out the [client](../client/README.md)
 
 ## Available Scripts
 
