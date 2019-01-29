@@ -27,7 +27,8 @@ export default class SearchInput extends React.Component {
             display: "flex", 
             "flexDirection": "row",
             "justifyContent": "space-between" 
-            }}onSubmit={this.onSubmit}>
+            }}
+            onSubmit={this.onSubmit}>
             <input
                 style={{flex: "auto"}}
                 type="search"
