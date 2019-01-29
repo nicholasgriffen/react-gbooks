@@ -14,7 +14,15 @@ export default function Book({book}) {
 
     return (<li>
                 <h1 className="title">{title}</h1>
-                <h2 className="authors">By: {authors.map((author, index) => <span key={index}>{author}</span>)}</h2>
+                <h2 className="authors">By: {authors.map((author, index) => {
+                    let delimiter
+                    if (authors.length > 1 && index < authors.length - 1) {
+                        delimiter = ', '
+                    } else {
+                        delimiter = ''
+                    }
+                    return <span key={index}>{author + delimiter}</span>
+                })}</h2>
                 <img className="thumbnail" src={thumbnail} alt={`Cover thumbnail for ${title}`}></img>
                 <p className="publisher">Published by {publisher} on <span className="publishedDate"> {publishedDate}</span></p>
                 <a className="infoLink" href={infoLink}>More info on Google Books</a>
