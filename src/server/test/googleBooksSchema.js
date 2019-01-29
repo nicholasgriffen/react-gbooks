@@ -1,9 +1,9 @@
 module.exports = {
     items: [
       {
-          selfLink: "",  //String
           volumeInfo: {   //Object
-              title: "",  //String
+            infoLink: "",  //String
+            title: "",  //String
               authors: [  //Array
                   ""  //String
               ],
