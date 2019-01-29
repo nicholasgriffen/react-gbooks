@@ -7,7 +7,7 @@ export default function Book({book}) {
     
     const title = (book.volumeInfo.title && book.volumeInfo.title !== 'Undefined') ? book.volumeInfo.title : 'Unknown'
     const authors = book.volumeInfo.authors ? book.volumeInfo.authors : ['Unknown']
-    const thumbnail = book.volumeInfo.imageLinks.thumbnail ? book.volumeInfo.imageLinks.thumbnail : '#'
+    const thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '#'
     const publisher = book.volumeInfo.publisher ? book.volumeInfo.publisher : 'Unpublished or Unknown'
     const publishedDate = book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : 'Unpublished'
     const infoLink = book.volumeInfo.infoLink ? book.volumeInfo.infoLink : '#'
