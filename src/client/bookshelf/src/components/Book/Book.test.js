@@ -15,8 +15,8 @@ const shallow = Enzyme.shallow
 const { expect } = chai
 
 const book = {
-    selfLink: 'PropTypes.string.isRequired',
     volumeInfo: {
+        infoLink: 'PropTypes.string.isRequired',
         title: 'PropTypes.string.isRequired',
         authors: ['PropTypes.arrayOf(PropTypes.string).isRequired'],
         publisher: 'PropTypes.string.isRequired',
@@ -41,7 +41,7 @@ describe('<Book />', () => {
         const wrapper = shallow(<Book 
             book={book}/>)
             
-            expect(wrapper.find('.selfLink')).to.have.lengthOf(1) 
+            expect(wrapper.find('.infoLink')).to.have.lengthOf(1) 
             expect(wrapper.find('.title')).to.have.lengthOf(1)    
             expect(wrapper.find('.authors')).to.have.lengthOf(1)    
             expect(wrapper.find('.publisher')).to.have.lengthOf(1)    
