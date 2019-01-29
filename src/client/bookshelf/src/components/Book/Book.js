@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 export default function Book({book}) {
     // default props or params likely better solution here
     // but had difficulty getting past TypeErrors with those solutions
+    if (!book.volumeInfo) return (<li>No results found...</li>)
     
     const title = (book.volumeInfo.title && book.volumeInfo.title !== 'Undefined') ? book.volumeInfo.title : 'Unknown'
     const authors = book.volumeInfo.authors ? book.volumeInfo.authors : ['Unknown']
