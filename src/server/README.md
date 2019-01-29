@@ -1,6 +1,10 @@
 ## Server
 
 ### BEFORE DEVELOPMENT OR TESTING
+  * Define the following environment variables, e.g., by writing a .env file:  
+    * API_ENDPOINT: https://www.googleapis.com/books/v1/volumes,  
+    * API_KEY: _YOUR SECRET GOOGLE BOOKS API KEY_,  
+    * PORT: 3030 _OR YOUR FAVORITE LARGE INTEGER_`
   * `cd react-gbooks/src/server && npm install` to install dependencies 
   * `cd react-gbooks/src/server && npm start` to run the server on localhost:3030:  
     `Server says: Server proxies requests to the Google Books API`  
