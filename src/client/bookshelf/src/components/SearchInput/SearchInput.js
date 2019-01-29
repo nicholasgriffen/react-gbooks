@@ -10,24 +10,30 @@ export default class SearchInput extends React.Component {
     }
 
     onChange = e => {
-        this.props.onChange(e.target.value)
-
         this.setState({
             searchTerm: e.target.value
         })
     }
+
+    onSubmit = e => {
+        e.preventDefault()
+        this.props.onSubmit(this.state.searchTerm)
+    }
     
     render() {
         return (
+        <form onSubmit ={this.onSubmit}>
             <input 
                 type="search"
                 onChange={this.onChange}
                 value={this.state.searchTerm}
             ></input>
+            <button>Search</button>    
+        </form>
         )
     }
 }
 
 SearchInput.propTypes = {
-    onChange: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 }
