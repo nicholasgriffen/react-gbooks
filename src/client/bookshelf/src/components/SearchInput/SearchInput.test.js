@@ -24,8 +24,11 @@ describe('<SearchInput />', () => {
     })
     it('requires onSubmit prop', () => {    
         const stub = sinon.stub(console, 'error')
+        
         stub.throwsArg(0)
+        
         expect(() => shallow(<SearchInput />)).to.throw('Warning: Failed prop type: The prop `onSubmit` is marked as required')
+        
         stub.resetHistory()    
     })
     it('takes an onSubmit prop and calls it on submit', () =>{
