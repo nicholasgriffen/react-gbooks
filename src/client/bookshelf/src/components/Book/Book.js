@@ -6,13 +6,17 @@ export default function Book({book}) {
     // but had difficulty getting past TypeErrors with those solutions
     if (!book.volumeInfo) return (<li>No results found...</li>)
     
-    const title = (book.volumeInfo.title && book.volumeInfo.title !== 'Undefined') ? book.volumeInfo.title : 'Unknown'
-    const authors = book.volumeInfo.authors ? book.volumeInfo.authors : ['Unknown']
-    const thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '#'
-    const publisher = book.volumeInfo.publisher ? book.volumeInfo.publisher : 'Unpublished or Unknown'
-    const publishedDate = book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate : 'Unpublished'
-    const infoLink = book.volumeInfo.infoLink ? book.volumeInfo.infoLink : '#'
+    const title = (book.volumeInfo.title !== 'Undefined') && assignIfNull(book.volumeInfo.title, 'Unknown')
+    const authors = assignIfNull(book.volumeInfo.authors, ['Unknown'])
+    const thumbnail = book.volumeInfo.imageLinks && assignIfNull(book.volumeInfo.imageLinks.thumbnail, '#')
+    const publisher = assignIfNull(book.volumeInfo.publisher, 'Unpublished or Unknown')
+    const publishedDate = assignIfNull(book.volumeInfo.publishedDate, 'Unpublished')
+    const infoLink = assignIfNull(book.volumeInfo.infoLink, '#')
 
+    function assignIfNull(key, value) {
+        return key ? key : value
+    }
+    
     return (<li>
                 <h1 className="title">{title}</h1>
                 <h2 className="authors">By: {authors.map((author, index) => {
