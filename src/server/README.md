@@ -9,8 +9,7 @@
   * `cd react-gbooks/src/server && npm start` to run the server on localhost:3030:  
     `Server says: Server proxies requests to the Google Books API`  
   or 
-  * update the `"proxy"` field in `package.json` to point to some other server  
-  If you haven't yet, check out the [client](../client/README.md)
+  * If you haven't yet, check out the [client](../client/README.md). In the client you may update the `"proxy"` field in  `package.json` to point to some other server  
 
 ## Available Scripts
 
