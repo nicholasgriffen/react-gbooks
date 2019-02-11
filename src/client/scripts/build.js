@@ -24,11 +24,6 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 // Generate configuration
 const config = configFactory('production');
 
-// Remove all content but keep the directory so that
-// if you're in it, you don't end up in Trash
-fs.emptyDirSync(paths.appBuild);
-// Merge with the public folder
-copyPublicFolder();
 // Start the webpack build
 build();
 
@@ -64,12 +59,5 @@ function build() {
 
       return resolve();
     });
-  });
-}
-
-function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
-    dereference: true,
-    filter: file => file !== paths.appHtml,
   });
 }
