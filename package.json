@@ -7,10 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
+    "client-build": "rm -rf ./src/server/public && cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public",
+    "start": "cd ./src/server && node index.js",
     "client-test": "cd src/client && jest --watch",
     "server-test": "cd src/server && mocha --watch",
-    "start": "cd ./src/server && node index.js",
-    "client-build": "cd src/client && node scripts/build.js && cd ../.. && rm -rf ./src/server/public && mv ./src/client/build ./src/server/public",
     "heroku-postbuild": "npm run client-build"
   },
   "repository": {
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/nicholasgriffen/react-gbooks/issues"
   },
-  "homepage": "https://github.com/nicholasgriffen/react-gbooks#readme",
+  "homepage": "/",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
@@ -49,6 +49,7 @@
     "eslint-plugin-react": "7.11.1",
     "express": "^4.16.4",
     "file-loader": "2.0.0",
+    "fs-extra": "^7.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "jest": "23.6.0",
     "node-fetch": "^2.3",
