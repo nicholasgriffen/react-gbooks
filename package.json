@@ -7,10 +7,11 @@
     "lib": "lib"
   },
   "scripts": {
+    "client-build": "rm -rf ./src/server/public && cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public",
+    "start": "cd ./src/server && node index.js",
     "client-test": "cd src/client && jest --watch",
     "server-test": "cd src/server && mocha --watch",
-    "start": "npm run build && cd ./src/server && node index.js",
-    "build": "rm -rf ./src/server/public && cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public"
+    "heroku-postbuild": "npm run client-build"
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,6 @@
     "babel-plugin-named-asset-import": "^0.3.0",
     "babel-preset-react-app": "^7.0.0",
     "dotenv": "6.0.0",
-    "dotenv-expand": "4.2.0",
     "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.6",
     "eslint-loader": "2.1.1",
