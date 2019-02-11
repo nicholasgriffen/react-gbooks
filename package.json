@@ -1,6 +1,34 @@
 {
-  "name": "bookshelf",
+  "name": "react-gbooks-server",
   "version": "0.1.0",
+  "description": "RESTful Express application meant to accept requests, make requests to the Google Books API, then respond to the first requestor with data from the Google Books API",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "client-test": "cd src/client && jest --watch",
+    "server-test": "cd src/server && mocha --watch",
+    "start": "npm run build && cd ./src/server && node index.js",
+    "build": "cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nicholasgriffen/react-gbooks.git"
+  },
+  "keywords": [
+    "rest",
+    "express",
+    "api",
+    "google",
+    "books"
+  ],
+  "author": "nicholasgriffen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholasgriffen/react-gbooks/issues"
+  },
+  "homepage": "https://github.com/nicholasgriffen/react-gbooks#readme",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
@@ -18,9 +46,11 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
+    "express": "^4.16.4",
     "file-loader": "2.0.0",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "jest": "23.6.0",
+    "node-fetch": "^2.3",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
     "react-dev-utils": "^7.0.1",
@@ -33,27 +63,22 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "./node_modules/.bin/jest --watch"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "proxy": "http://localhost:3030",
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
+    "chai-http": "^4.2.1",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.8.0",
+    "mocha": "^5.2.0",
     "sinon": "^7.2.3"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -64,8 +89,7 @@
       "react-app-polyfill/jsdom"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+      "<rootDir>/src/**/?(*.)test.js"
     ],
     "testEnvironment": "jsdom",
     "testURL": "http://localhost",
@@ -77,13 +101,13 @@
       "^.+\\.module\\.(css|sass|scss)$"
     ],
     "moduleFileExtensions": [
-      "js",
-      "json"
+      "js"
     ]
   },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
