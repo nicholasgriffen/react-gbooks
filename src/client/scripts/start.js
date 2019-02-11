@@ -8,7 +8,6 @@ process.env.NODE_ENV = 'development';
 require('../config/env');
 
 
-const chalk = require('chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const clearConsole = require('react-dev-utils/clearConsole');
@@ -33,23 +32,6 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 const DEFAULT_PORT = process.env.PORT || 3000
 const HOST = process.env.HOST || '0.0.0.0';
 
-if (process.env.HOST) {
-  console.log(
-    chalk.cyan(
-      `Attempting to bind to HOST environment variable: ${chalk.yellow(
-        chalk.bold(process.env.HOST)
-      )}`
-    )
-  );
-  console.log(
-    `If this was unintentional, check that you haven't mistakenly set it in your shell.`
-  );
-  console.log(
-    `Learn more here: ${chalk.yellow('http://bit.ly/CRA-advanced-config')}`
-  );
-  console.log();
-}
-
 const config = configFactory('development');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const appName = require(paths.appPackageJson).name;
@@ -73,7 +55,7 @@ devServer.listen(DEFAULT_PORT, HOST, err => {
   if (isInteractive) {
     clearConsole();
   }
-  console.log(chalk.cyan('Starting the development server...\n'));
+  console.log('Starting the development server...\n');
   openBrowser(urls.localUrlForBrowser);
 });
 

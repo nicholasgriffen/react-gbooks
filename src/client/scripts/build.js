@@ -16,10 +16,8 @@ require('../config/env');
 
 
 const path = require('path');
-const chalk = require('chalk');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const bfj = require('bfj');
 const configFactory = require('../config/webpack.config');
 const paths = require('../config/paths');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
@@ -30,11 +28,7 @@ const printBuildError = require('react-dev-utils/printBuildError');
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
-const printFileSizesAfterBuild = FileSizeReporter.printFileSizesAfterBuild;
-
-// These sizes are pretty large. We'll warn for bundles exceeding them.
-const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
-const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
+const useYarn = fs.existsSync(paths.yarnLockFile);
 
 const isInteractive = process.stdout.isTTY;
 
@@ -42,10 +36,6 @@ const isInteractive = process.stdout.isTTY;
 if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
 }
-
-// Process CLI arguments
-const argv = process.argv.slice(2);
-const writeStatsJson = argv.indexOf('--stats') !== -1;
 
 // Generate configuration
 const config = configFactory('production');
@@ -59,43 +49,17 @@ checkBrowsers(paths.appPath, isInteractive)
     // This lets us display how much they changed later.
     return measureFileSizesBeforeBuild(paths.appBuild);
   })
-  .then(previousFileSizes => {
+  .then( () => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
     fs.emptyDirSync(paths.appBuild);
     // Merge with the public folder
     copyPublicFolder();
     // Start the webpack build
-    return build(previousFileSizes);
+    return build();
   })
   .then(
-    ({ stats, previousFileSizes, warnings }) => {
-      if (warnings.length) {
-        console.log(chalk.yellow('Compiled with warnings.\n'));
-        console.log(warnings.join('\n\n'));
-        console.log(
-          '\nSearch for the ' +
-            chalk.underline(chalk.yellow('keywords')) +
-            ' to learn more about each warning.'
-        );
-        console.log(
-          'To ignore, add ' +
-            chalk.cyan('// eslint-disable-next-line') +
-            ' to the line before.\n'
-        );
-      } else {
-        console.log(chalk.green('Compiled successfully.\n'));
-      }
-
-      console.log('File sizes after gzip:\n');
-      printFileSizesAfterBuild(
-        stats,
-        previousFileSizes,
-        paths.appBuild,
-        WARN_AFTER_BUNDLE_GZIP_SIZE,
-        WARN_AFTER_CHUNK_GZIP_SIZE
-      );
-      console.log();
+    () => {
 
       const appPackage = require(paths.appPackageJson);
       const publicUrl = paths.publicUrl;
@@ -105,11 +69,12 @@ checkBrowsers(paths.appPath, isInteractive)
         appPackage,
         publicUrl,
         publicPath,
-        buildFolder
+        buildFolder,
+        useYarn
       );
     },
     err => {
-      console.log(chalk.red('Failed to compile.\n'));
+      console.log('Failed to compile.\n');
       printBuildError(err);
       process.exit(1);
     }
@@ -122,7 +87,7 @@ checkBrowsers(paths.appPath, isInteractive)
   });
 
 // Create the production build and print the deployment instructions.
-function build(previousFileSizes) {
+function build() {
   console.log('Creating an optimized production build...');
 
   let compiler = webpack(config);
@@ -150,34 +115,8 @@ function build(previousFileSizes) {
         }
         return reject(new Error(messages.errors.join('\n\n')));
       }
-      if (
-        process.env.CI &&
-        (typeof process.env.CI !== 'string' ||
-          process.env.CI.toLowerCase() !== 'false') &&
-        messages.warnings.length
-      ) {
-        console.log(
-          chalk.yellow(
-            '\nTreating warnings as errors because process.env.CI = true.\n' +
-              'Most CI servers set it automatically.\n'
-          )
-        );
-        return reject(new Error(messages.warnings.join('\n\n')));
-      }
 
-      const resolveArgs = {
-        stats,
-        previousFileSizes,
-        warnings: messages.warnings,
-      };
-      if (writeStatsJson) {
-        return bfj
-          .write(paths.appBuild + '/bundle-stats.json', stats.toJson())
-          .then(() => resolve(resolveArgs))
-          .catch(error => reject(new Error(error)));
-      }
-
-      return resolve(resolveArgs);
+      return resolve();
     });
   });
 }
