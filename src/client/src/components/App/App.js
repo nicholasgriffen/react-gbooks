@@ -9,7 +9,7 @@ class App extends Component {
     super()
     this.state = {
       books: [],
-      endpoint: process.env.REACT_APP_API_ENDPOINT,
+      endpoint: '/books',
     }
   }
 

@@ -10,7 +10,7 @@
     "client-test": "cd src/client && jest --watch",
     "server-test": "cd src/server && mocha --watch",
     "start": "npm run build && cd ./src/server && node index.js",
-    "build": "cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public"
+    "build": "rm -rf ./src/server/public && cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/nicholasgriffen/react-gbooks/issues"
   },
-  "homepage": "https://github.com/nicholasgriffen/react-gbooks#readme",
+  "homepage": "/",
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
@@ -43,11 +43,13 @@
     "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.6",
     "eslint-loader": "2.1.1",
+    "eslint-plugin-flowtype": "^2",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
     "express": "^4.16.4",
     "file-loader": "2.0.0",
+    "fs-extra": "^7.0.1",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "jest": "23.6.0",
     "node-fetch": "^2.3",
