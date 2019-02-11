@@ -82,14 +82,13 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "src/client/*.js"
     ],
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
     "testMatch": [
-      "<rootDir>/src/**/?(*.)test.js"
+      "<rootDir>/src/client/**/?(*.)test.js"
     ],
     "testEnvironment": "jsdom",
     "testURL": "http://localhost",
@@ -97,8 +96,7 @@
       "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
     },
     "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"
     ],
     "moduleFileExtensions": [
       "js"
