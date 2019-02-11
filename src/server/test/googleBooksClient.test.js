@@ -3,6 +3,7 @@ const { expect } = require('chai')
 const googleBooksClient = require('../lib/googleBooksClient')
 
 const schema = require('./googleBooksSchema')
+
 const term = 'Mark Twain'
 
 describe('googleBooksClient.search', () => {
