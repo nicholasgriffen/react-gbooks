@@ -9,8 +9,8 @@
   "scripts": {
     "client-test": "cd src/client && jest --watch",
     "server-test": "cd src/server && mocha --watch",
-    "start": "npm run build && cd ./src/server && node index.js",
-    "build": "cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public"
+    "start": "npm run build",
+    "build": "cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public && cd ./src/server && node index.js"
   },
   "repository": {
     "type": "git",
