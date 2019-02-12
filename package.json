@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "client-build": "rm -rf ./src/server/public && cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public",
+    "client-build": "rm -rf ./src/server/public && cd src/client && node scripts/build.js && cd ../.. && mv ./src/client/build ./src/server/public && cp ./src/client/public/index.css ./src/server/public/. && cp ./src/client/public/favicon.ico ./src/server/public/.",
     "start": "cd ./src/server && node index.js",
     "client-test": "cd src/client && jest --watch",
     "server-test": "cd src/server && mocha --watch",
