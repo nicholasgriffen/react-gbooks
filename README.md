@@ -21,8 +21,11 @@ Track issues on github [here](https://github.com/nicholasgriffen/react-gbooks/is
 6. `npm start`  
 
 ## Deploy   
-`heroku create my-app`    
-`git push heroku master`  
+1. `heroku create my-app`  
+2. `heroku config:set API_ENDPOINT=https://www.googleapis.com/books/v1/volumes`
+3. `heroku config:set API_KEY=your_secret_key #substitute your Google Books API key`
+4. `git push heroku master`  
+
 See `"scripts": "client-build"` and `"scripts": "heroku-postbuild"` in package.json for implementation details.  
 See [Heroku](https://devcenter.heroku.com/articles/creating-apps) for heroku CLI usage.  
 
