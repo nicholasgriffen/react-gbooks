@@ -8,16 +8,17 @@ Track issues on github [here](https://github.com/nicholasgriffen/react-gbooks/is
 
 ## Quick Start 
 1. `git clone git@github.com:nicholasgriffen/react-gbooks`  
-2. `npm install`  
-3. Define ./src/server/.env   
+2. `cd react-gbooks`
+3. `npm install`  
+4. Define ./src/server/.env   
     See [example](./support/env.example)    
         Required:    
             API_ENDPOINT  
             API_KEY ([how to get one](https://developers.google.com/books/docs/v1/using))  
         Optional:  
             PORT  
-4. `npm run client-build`    
-5. `npm start`  
+5. `npm run client-build`    
+6. `npm start`  
 
 ## Deploy   
 `heroku create my-app`    
