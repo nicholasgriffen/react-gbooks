@@ -1,9 +1,11 @@
 # Overview 
 
-## Client 
+## src/client
+  React application bootstrapped with [create-react-app](https://github.com/facebook/create-react-app)  
+  Designed to be served from src/server/public  
   Presents and renders a search bar   
-  Sends user input as request to Server  
-  Receives data as response from Server    
+  Sends user input as request to src/server/books/    
+  Receives data as response from src/server/books      
   Presents search results   
 ### Highest Priority Issue 
 [#39](https://github.com/nicholasgriffen/react-gbooks/issues/39). Client was created with, then ejected from create-react-app
@@ -15,7 +17,7 @@
 #### `npm run client-test`  
   run jest in watch mode
   
-## Server 
+## src/client 
   Serves public/index.html   
   Should, but does not have to, serve the results of `npm run client-build` from ./public/           
   Initiates a search of Google Books API in response to http GET to /books with optional query param, `/books?search=param`  
