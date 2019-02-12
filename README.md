@@ -10,8 +10,7 @@ Track issues on github [here](https://github.com/nicholasgriffen/react-gbooks/is
 1. `git clone git@github.com:nicholasgriffen/react-gbooks`  
 2. `cd react-gbooks`
 3. `npm install`  
-4. Define ./src/server/.env   
-    See [example](./support/env.example)    
+4. Define `./src/server/.env` (see [example](./support/env.example))      
         Required:    
             API_ENDPOINT  
             API_KEY ([how to get one](https://developers.google.com/books/docs/v1/using))  
