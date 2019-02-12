@@ -43,7 +43,7 @@ See [Heroku](https://devcenter.heroku.com/articles/creating-apps) for heroku CLI
 ### Relevant scripts from package.json:  
 #### `npm run client-build`  
   transform src/client and copy it to the src/server/public folder  
-  see [build.sh](./support/env.example) for implementation details  
+  see [build.sh](./support/build.sh) for implementation details  
 #### `npm run client-test`  
   run jest in watch mode
   
