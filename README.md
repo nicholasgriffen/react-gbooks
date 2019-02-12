@@ -13,7 +13,7 @@ Track issues on github [here](https://github.com/nicholasgriffen/react-gbooks/is
     See [example](./support/env.example)    
         Required:    
             API_ENDPOINT  
-            API_KEY  
+            API_KEY ([how to get one](https://developers.google.com/books/docs/v1/using))  
         Optional:  
             PORT  
 4. `npm run client-build`    
